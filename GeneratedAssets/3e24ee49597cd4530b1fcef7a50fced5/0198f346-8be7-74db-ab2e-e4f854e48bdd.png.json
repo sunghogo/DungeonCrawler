@@ -1,0 +1,20 @@
+{
+    "asset": "3e24ee49597cd4530b1fcef7a50fced5",
+    "fileName": "0198f346-8be7-74db-ab2e-e4f854e48bdd.png",
+    "prompt": "slime, green, enemy, single, solo",
+    "negativePrompt": "blurry, background, shadow, watermarks, eyes, smile, mouth, glow, bloom",
+    "model": "16bed882-01e7-4746-b232-15ae97eb1d62",
+    "modelName": "Fantasy RPG",
+    "customSeed": -1,
+    "w3CTraceId": "7ba543ba5afc6801bb74f61157f9cdc5",
+    "refinementMode": "Generation",
+    "pixelateTargetSize": 0,
+    "pixelateKeepImageSize": false,
+    "pixelatePixelBlockSize": 0,
+    "pixelateMode": 0,
+    "pixelateOutlineThickness": 0,
+    "doodles": {
+        "m_Items": []
+    },
+    "upscaleFactor": 0
+}

@@ -1,0 +1,20 @@
+{
+    "asset": "cd14663c6ff874c91a808a2002970536",
+    "fileName": "0198f35e-e720-73b0-bb0a-121482faa3ab.jpg",
+    "prompt": "goblin, green, red eyes, rag, solo, single, forward, free hand",
+    "negativePrompt": "background, ground, shadow, ambient occlusion, blurry, weapon, armor",
+    "model": "7f7b9460-c961-4bf8-a854-e164210cd1ff",
+    "modelName": "Game Characters",
+    "customSeed": -1,
+    "w3CTraceId": "ec41f75455a8f2afa4e4bd3dbe6136d8",
+    "refinementMode": "Generation",
+    "pixelateTargetSize": 0,
+    "pixelateKeepImageSize": false,
+    "pixelatePixelBlockSize": 0,
+    "pixelateMode": 0,
+    "pixelateOutlineThickness": 0,
+    "doodles": {
+        "m_Items": []
+    },
+    "upscaleFactor": 0
+}

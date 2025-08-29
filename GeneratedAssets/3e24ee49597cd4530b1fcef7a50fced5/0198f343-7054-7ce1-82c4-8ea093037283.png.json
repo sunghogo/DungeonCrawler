@@ -1,0 +1,20 @@
+{
+    "asset": "3e24ee49597cd4530b1fcef7a50fced5",
+    "fileName": "0198f343-7054-7ce1-82c4-8ea093037283.png",
+    "prompt": "slime, green, face",
+    "negativePrompt": "blurry, background, shadow, watermarks",
+    "model": "c65c79a0-b2af-46da-a8e5-2fc106ec2ab6",
+    "modelName": "RPG Chibis",
+    "customSeed": -1,
+    "w3CTraceId": "5e39f676799cd50c6665ef134749f995",
+    "refinementMode": "Generation",
+    "pixelateTargetSize": 0,
+    "pixelateKeepImageSize": false,
+    "pixelatePixelBlockSize": 0,
+    "pixelateMode": 0,
+    "pixelateOutlineThickness": 0,
+    "doodles": {
+        "m_Items": []
+    },
+    "upscaleFactor": 0
+}

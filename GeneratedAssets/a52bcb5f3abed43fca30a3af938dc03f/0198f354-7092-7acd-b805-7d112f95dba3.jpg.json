@@ -1,0 +1,20 @@
+{
+    "asset": "a52bcb5f3abed43fca30a3af938dc03f",
+    "fileName": "0198f354-7092-7acd-b805-7d112f95dba3.jpg",
+    "prompt": "skeleton, full body, enemy, forward",
+    "negativePrompt": "blurry, shadow, light, ambient occlusion, weapon, ground, background",
+    "model": "7f7b9460-c961-4bf8-a854-e164210cd1ff",
+    "modelName": "Game Characters",
+    "customSeed": -1,
+    "w3CTraceId": "502f9a2a659b12c97ec3b641c5ede762",
+    "refinementMode": "Generation",
+    "pixelateTargetSize": 0,
+    "pixelateKeepImageSize": false,
+    "pixelatePixelBlockSize": 0,
+    "pixelateMode": 0,
+    "pixelateOutlineThickness": 0,
+    "doodles": {
+        "m_Items": []
+    },
+    "upscaleFactor": 0
+}

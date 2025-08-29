@@ -1,0 +1,20 @@
+{
+    "asset": "a52bcb5f3abed43fca30a3af938dc03f",
+    "fileName": "0198f353-55c4-7f3a-aac4-edfa39e7c3ec.jpg",
+    "prompt": "skeleton, full body, spooky, enemy",
+    "negativePrompt": "blurry, shadow, light, ambient occlusion",
+    "model": "7f7b9460-c961-4bf8-a854-e164210cd1ff",
+    "modelName": "Game Characters",
+    "customSeed": -1,
+    "w3CTraceId": "f24ddbe44dce3d43d875c769d7b4563e",
+    "refinementMode": "Generation",
+    "pixelateTargetSize": 0,
+    "pixelateKeepImageSize": false,
+    "pixelatePixelBlockSize": 0,
+    "pixelateMode": 0,
+    "pixelateOutlineThickness": 0,
+    "doodles": {
+        "m_Items": []
+    },
+    "upscaleFactor": 0
+}

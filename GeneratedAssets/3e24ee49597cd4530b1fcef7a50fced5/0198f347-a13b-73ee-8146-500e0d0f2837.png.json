@@ -1,0 +1,20 @@
+{
+    "asset": "3e24ee49597cd4530b1fcef7a50fced5",
+    "fileName": "0198f347-a13b-73ee-8146-500e0d0f2837.png",
+    "prompt": "rat, aggressive, hairy, red eyes",
+    "negativePrompt": "blurry, background, shadow, watermarks, smile",
+    "model": "16bed882-01e7-4746-b232-15ae97eb1d62",
+    "modelName": "Fantasy RPG",
+    "customSeed": -1,
+    "w3CTraceId": "54e4594902505ecbd00946d06ca26d49",
+    "refinementMode": "Generation",
+    "pixelateTargetSize": 0,
+    "pixelateKeepImageSize": false,
+    "pixelatePixelBlockSize": 0,
+    "pixelateMode": 0,
+    "pixelateOutlineThickness": 0,
+    "doodles": {
+        "m_Items": []
+    },
+    "upscaleFactor": 0
+}
