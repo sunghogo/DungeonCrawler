@@ -418,6 +418,17 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1227895942 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7928939046166118371, guid: af3c5cc509fa6429face2e4d89f36de1, type: 3}
+  m_PrefabInstance: {fileID: 6914851190709044448}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4c278b7dc4804598b3b71e8e21faf78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Bar
 --- !u!1 &1379048200
 GameObject:
   m_ObjectHideFlags: 0
@@ -759,6 +770,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rat
       objectReference: {fileID: 0}
+    - target: {fileID: 2468208515468824745, guid: e03dee76df786460b85c23357308a20f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3151623149976606143, guid: e03dee76df786460b85c23357308a20f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4
@@ -769,7 +784,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3151623149976606143, guid: e03dee76df786460b85c23357308a20f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 3151623149976606143, guid: e03dee76df786460b85c23357308a20f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -799,6 +814,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4990307397218794009, guid: e03dee76df786460b85c23357308a20f, type: 3}
+      propertyPath: HPBar
+      value: 
+      objectReference: {fileID: 1227895942}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -861,10 +880,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Skeleton
       objectReference: {fileID: 0}
-    - target: {fileID: 5156012595004694010, guid: 1a23835bf760d44c89f5c30609b8ea16, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0.07501221
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -882,6 +897,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goblin
       objectReference: {fileID: 0}
+    - target: {fileID: 3231034043391229763, guid: dd69c9d9f1f444b75818cb6afcf5762a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7558896910159676469, guid: dd69c9d9f1f444b75818cb6afcf5762a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4
@@ -892,7 +911,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7558896910159676469, guid: dd69c9d9f1f444b75818cb6afcf5762a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 7558896910159676469, guid: dd69c9d9f1f444b75818cb6afcf5762a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1080,14 +1099,6 @@ PrefabInstance:
     - target: {fileID: 5629613759574322449, guid: af3c5cc509fa6429face2e4d89f36de1, type: 3}
       propertyPath: m_Name
       value: Stats Panel
-      objectReference: {fileID: 0}
-    - target: {fileID: 6322595408594370140, guid: af3c5cc509fa6429face2e4d89f36de1, type: 3}
-      propertyPath: m_Name
-      value: XP Bar
-      objectReference: {fileID: 0}
-    - target: {fileID: 6322595408594370140, guid: af3c5cc509fa6429face2e4d89f36de1, type: 3}
-      propertyPath: m_TagString
-      value: XP Bar
       objectReference: {fileID: 0}
     - target: {fileID: 7402627918531186687, guid: af3c5cc509fa6429face2e4d89f36de1, type: 3}
       propertyPath: player

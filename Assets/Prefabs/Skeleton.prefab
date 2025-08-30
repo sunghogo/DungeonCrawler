@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2431029080748937428}
   - component: {fileID: 8585055059310698326}
   - component: {fileID: 295446897824787140}
+  - component: {fileID: 3070570758118339139}
   m_Layer: 0
   m_Name: Skeleton
   m_TagString: Untagged
@@ -104,16 +105,74 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6acde03e25524c1b9dfe684e84d39bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  lvl: 1
-  maxHp: 15
-  maxMp: 10
-  maxXp: 15
-  xpGiven: 15
-  atk: 9
-  def: 3
-  spd: 3
+  startingLVL: 1
+  startingMaxHP: 15
+  startingMaxMP: 10
+  startingMaxXP: 10
+  startingXPDrop: 15
+  startingATK: 8
+  startingDEF: 2
+  startingSPD: 5
+  <LVL>k__BackingField: 0
+  <MaxHP>k__BackingField: 0
+  <HP>k__BackingField: 0
+  <MaxMP>k__BackingField: 0
+  <MP>k__BackingField: 0
+  <MaxXP>k__BackingField: 0
+  <XP>k__BackingField: 0
+  <XPDrop>k__BackingField: 0
+  <ATK>k__BackingField: 0
+  <DEF>k__BackingField: 0
+  <SPD>k__BackingField: 0
+  player: {fileID: 0}
   textTmp: {fileID: 8386029765328968631}
-  hpBar: {fileID: 8341672505821869896}
+  HPBar: {fileID: 8341672505821869896}
+--- !u!61 &3070570758118339139
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4128188200262819256}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1001 &5595385706702259645
 PrefabInstance:
   m_ObjectHideFlags: 0

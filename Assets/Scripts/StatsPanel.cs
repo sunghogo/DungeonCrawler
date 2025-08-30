@@ -6,7 +6,6 @@ public class StatsPanel : MonoBehaviour
     public static StatsPanel Instance { get; private set; }
 
     [Header("Refs")]
-    [SerializeField] Player player;
     [SerializeField] List<TextTMP> textTmps;
     [SerializeField] List<Bar> bars;
 
@@ -23,7 +22,7 @@ public class StatsPanel : MonoBehaviour
     {
         foreach (var textTmp in textTmps) {
             string tag = textTmp.gameObject.tag;
-            string val = $"{tag}: {player.GetStat(StatUtils.TagToStat(tag)).ToString()}";
+            string val = $"{tag}: {Player.Instance.GetStat(StatUtils.TagToStat(tag))}";
             textTmp.UpdateText(val);
         }
     }
@@ -34,13 +33,13 @@ public class StatsPanel : MonoBehaviour
             string tag = bar.gameObject.tag;
             switch (tag) {
                 case "HP Bar":
-                    bar.SetValue(player.HP, player.MAX_HP);
+                    bar.SetValue(Player.Instance.HP, Player.Instance.MaxHP);
                     break;
                 case "MP Bar":
-                    bar.SetValue(player.MP, player.MAX_MP);
+                    bar.SetValue(Player.Instance.MP, Player.Instance.MaxMP);
                     break;
                 case "XP Bar":
-                    bar.SetValue(player.XP, player.MAX_XP);
+                    bar.SetValue(Player.Instance.XP, Player.Instance.MaxXP);
                     break;
                 default:
                     bar.SetValue(0, 0);

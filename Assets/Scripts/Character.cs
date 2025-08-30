@@ -3,39 +3,40 @@ using UnityEngine;
 public abstract class Character : MonoBehaviour
 {
     [Header("Starting Stats")]
-    [SerializeField] protected float lvl = 1;
-    [SerializeField] protected float maxHp = 20;
-    [SerializeField] protected float maxMp = 10;
-    [SerializeField] protected float maxXp = 10;
-    [SerializeField] protected float xpGiven = 1;
-    [SerializeField] protected float atk = 5;
-    [SerializeField] protected float def = 5;
-    [SerializeField] protected float spd = 5;
+    [SerializeField] protected float startingLVL = 1;
+    [SerializeField] protected float startingMaxHP = 20;
+    [SerializeField] protected float startingMaxMP = 10;
+    [SerializeField] protected float startingMaxXP = 10;
+    [SerializeField] protected float startingXPDrop = 1;
+    [SerializeField] protected float startingATK = 5;
+    [SerializeField] protected float startingDEF = 5;
+    [SerializeField] protected float startingSPD = 5;
 
-    public float LVL { get; protected set; }
-    public float MAX_HP { get; protected set; } 
-    public float HP { get; protected set; }
-    public float MAX_MP { get; protected set; }
-    public float MP { get; protected set; }
-    public float MAX_XP { get; protected set; }
-    public float XP { get; protected set; }
-    public float XP_GIVEN { get; protected set; }
-    public float ATK { get; protected set; }
-    public float DEF { get; protected set; }
-    public float SPD { get; protected set; }
+    [field: Header("Current Stats")]
+    [field: SerializeField] public float LVL { get; protected set; }
+    [field: SerializeField] public float MaxHP { get; protected set; } 
+    [field: SerializeField] public float HP { get; protected set; }
+    [field: SerializeField] public float MaxMP { get; protected set; }
+    [field: SerializeField] public float MP { get; protected set; }
+    [field: SerializeField] public float MaxXP { get; protected set; }
+    [field: SerializeField] public float XP { get; protected set; }
+    [field: SerializeField] public float XPDrop { get; protected set; }
+    [field: SerializeField] public float ATK { get; protected set; }
+    [field: SerializeField] public float DEF { get; protected set; }
+    [field: SerializeField] public float SPD { get; protected set; }
 
     public float GetStat(StatType stat)
     {
         return stat switch
         {
             StatType.LVL      => LVL,
-            StatType.MAX_HP   => MAX_HP,
+            StatType.MaxHP   => MaxHP,
             StatType.HP       => HP,
-            StatType.MAX_MP   => MAX_MP,
+            StatType.MaxMP   => MaxMP,
             StatType.MP       => MP,
-            StatType.MAX_XP   => MAX_XP,
+            StatType.MaxXP   => MaxXP,
             StatType.XP       => XP,
-            StatType.XP_GIVEN => XP_GIVEN,
+            StatType.XPDrop => XPDrop,
             StatType.ATK      => ATK,
             StatType.DEF      => DEF,
             StatType.SPD      => SPD,
@@ -44,19 +45,21 @@ public abstract class Character : MonoBehaviour
     }
 
     void InitializeStats() {
-        LVL = lvl;
-        HP = MAX_HP = maxHp;
-        MP = MAX_MP = maxMp; 
-        MAX_XP = maxXp;
+        LVL = startingLVL;
+        HP = MaxHP = startingMaxHP;
+        MP = MaxMP = startingMaxMP; 
+        MaxXP = startingMaxXP;
         XP = 0; 
-        XP_GIVEN = xpGiven;
-        ATK = atk;
-        DEF = def; 
-        SPD = spd;  
+        XPDrop = startingXPDrop;
+        ATK = startingATK;
+        DEF = startingDEF; 
+        SPD = startingSPD;  
     }
 
-    void Awake() {
+    void Awake()
+    {
         InitializeStats();
+        OnAwake();
     }
 
     void Start() {
@@ -79,6 +82,7 @@ public abstract class Character : MonoBehaviour
         OnTakeDamage();
     }
 
+    protected abstract void OnAwake();
     protected abstract void OnStart();
     protected abstract void OnUpdate();
     protected abstract void OnAttack();
