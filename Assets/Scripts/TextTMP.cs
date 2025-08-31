@@ -5,7 +5,7 @@ public class TextTMP : MonoBehaviour
 {
     TMP_Text tmp;
 
-    public void UpdateText(string value) {
+    public void SetText(string value) {
         tmp.text = value;
     }
 

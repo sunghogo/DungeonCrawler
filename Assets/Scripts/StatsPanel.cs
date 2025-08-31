@@ -6,8 +6,33 @@ public class StatsPanel : MonoBehaviour
     public static StatsPanel Instance { get; private set; }
 
     [Header("Refs")]
+    [SerializeField] GameObject subcontainer;
     [SerializeField] List<TextTMP> textTmps;
     [SerializeField] List<Bar> bars;
+
+    public bool IsActive { get; private set; } = false;
+
+    public void Activate()
+    {
+        subcontainer.SetActive(true);
+        IsActive = true;
+    }
+
+    public void Deactivate()
+    {
+        subcontainer.SetActive(false);
+        IsActive = false;
+    }
+
+    void HandleGameOver()
+    {
+        Deactivate();
+    }
+
+    void HandleGameSart()
+    {
+        Activate();
+    }
 
     void InitializeLists()
     {
@@ -18,20 +43,23 @@ public class StatsPanel : MonoBehaviour
         bars.AddRange(GetComponentsInChildren<Bar>(includeInactive: true));
     }
 
-    void UpdateAllTexts() 
+    void UpdateAllTexts()
     {
-        foreach (var textTmp in textTmps) {
+        foreach (var textTmp in textTmps)
+        {
             string tag = textTmp.gameObject.tag;
-            string val = $"{tag}: {Player.Instance.GetStat(StatUtils.TagToStat(tag))}";
-            textTmp.UpdateText(val);
+            string val = $"{tag}: {(int) Player.Instance.GetStat(StatUtils.TagToStat(tag))}";
+            textTmp.SetText(val);
         }
     }
 
     void UpdateAllBars()
     {
-        foreach (var bar in bars) {
+        foreach (var bar in bars)
+        {
             string tag = bar.gameObject.tag;
-            switch (tag) {
+            switch (tag)
+            {
                 case "HP Bar":
                     bar.SetValue(Player.Instance.HP, Player.Instance.MaxHP);
                     break;
@@ -48,7 +76,8 @@ public class StatsPanel : MonoBehaviour
         }
     }
 
-    public void UpdateStatsPanel() {
+    public void UpdateStatsPanel()
+    {
         UpdateAllTexts();
         UpdateAllBars();
     }
@@ -63,9 +92,18 @@ public class StatsPanel : MonoBehaviour
         Instance = this;
 
         InitializeLists();
+        GameManager.OnGameOver += HandleGameOver;
+        GameManager.OnGameStart += HandleGameSart;
     }
 
-    void Start() {
+    void Start()
+    {
         UpdateStatsPanel();
+    }
+
+    void OnDestroy()
+    {
+        GameManager.OnGameOver -= HandleGameOver;
+        GameManager.OnGameStart -= HandleGameSart;
     }
 }

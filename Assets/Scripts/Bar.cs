@@ -9,18 +9,36 @@ public class Bar : MonoBehaviour
 
     [SerializeField, Range(0f, 1f)] private float fill = 1f;
 
+    void HandleGameOver()
+    {
+        imageRectTransform.gameObject.GetComponent<Image>().enabled = false;
+    }
+
+    void HandleGameSart()
+    {
+        imageRectTransform.gameObject.GetComponent<Image>().enabled = true;
+    }
+
     void Awake()
     {
         if (imageRectTransform != null)
         {
             imageRectTransform.anchorMin = new Vector2(0f, 0.5f);
             imageRectTransform.anchorMax = new Vector2(0f, 0.5f);
-            imageRectTransform.pivot     = new Vector2(0f, 0.5f);
+            imageRectTransform.pivot = new Vector2(0f, 0.5f);
             imageRectTransform.anchoredPosition = new Vector2(0f, imageRectTransform.anchoredPosition.y);
         }
 
         UpdateBar();
+        GameManager.OnGameOver += HandleGameOver;
+        GameManager.OnGameStart += HandleGameSart;
     }
+
+    void OnDestroy()
+    {
+        GameManager.OnGameOver -= HandleGameOver;
+        GameManager.OnGameStart -= HandleGameSart;
+    } 
 
     private void UpdateBar()
     {

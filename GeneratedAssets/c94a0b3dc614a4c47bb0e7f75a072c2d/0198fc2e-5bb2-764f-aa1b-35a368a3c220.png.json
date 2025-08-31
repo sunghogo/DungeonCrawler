@@ -1,0 +1,20 @@
+{
+    "asset": "c94a0b3dc614a4c47bb0e7f75a072c2d",
+    "fileName": "0198fc2e-5bb2-764f-aa1b-35a368a3c220.png",
+    "prompt": "brick, tile, grout, geometric, masonry, horizontal, stretcher, bond, subway, blackwhite, seamless",
+    "negativePrompt": "blurry, messy, artifacts",
+    "model": "575ecf67-4425-4939-97b9-5e138b8ee234",
+    "modelName": "Unity Texture2D",
+    "customSeed": -1,
+    "w3CTraceId": "21ecee8b2ee8104938c457728bd2ef51",
+    "refinementMode": "Generation",
+    "pixelateTargetSize": 0,
+    "pixelateKeepImageSize": false,
+    "pixelatePixelBlockSize": 0,
+    "pixelateMode": 0,
+    "pixelateOutlineThickness": 0,
+    "doodles": {
+        "m_Items": []
+    },
+    "upscaleFactor": 0
+}

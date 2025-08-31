@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using System.Collections.Generic;
 
 public enum GameState
 {
@@ -13,12 +14,11 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     public static event Action<int> OnScoreChanged;
     public static event Action<int> OnHighScoreChanged;
-    public static event Action<int> OnLivesChanged;
     public static event Action OnNextLevel;
     public static event Action OnGameStart;
     public static event Action OnGameOver;
     public static event Action OnScreenStart;
-
+    public static event Action OnTurn;
 
     [field: Header("Game States")]
     [field: SerializeField] public bool StartingScreen { get; private set; }
@@ -26,23 +26,11 @@ public class GameManager : MonoBehaviour
     [field: SerializeField] public bool GameOver { get; private set; }
     [field: SerializeField] public bool ChangeLevel { get; private set; } = false;
 
-    [field: Header("Properties")]
-    [field: SerializeField] public int StartingLives { get; private set; } = 3;
-
     [field: Header("Shared Data")]
-    [field: SerializeField] public Vector3 PlayerPostion { get; private set; }
-    [field: SerializeField] public float MinX { get; private set; } = 0;
-    [field: SerializeField] public float MaxX { get; private set; } = 0;
-    [field: SerializeField] public float MinY { get; private set; } = 0;
-    [field: SerializeField] public float MaxY { get; private set; } = 0;
     [field: SerializeField] public int Score { get; private set; } = 0;
     [field: SerializeField] public int HighScore { get; private set; } = 0;
-    [field: SerializeField] public int Lives { get; private set; } = 3;
-
-
-    public void SetPlayerPosition(Vector3 newPosition) {
-        PlayerPostion = newPosition;
-    }
+    [field: SerializeField] public int SpawnCount { get; private set; } = 1;
+    [field: SerializeField] public List<Enemy> Enemies { get; private set; } = new List<Enemy>();
 
     public void IncrementScore()
     {
@@ -62,16 +50,21 @@ public class GameManager : MonoBehaviour
         OnHighScoreChanged?.Invoke(HighScore);
     }
 
-    public void DecrementLives()
+    public void DecrementSpawnCount()
     {
-        Lives = Mathf.Max(0, Lives - 1);
-        OnLivesChanged?.Invoke(Lives);
-        if (Lives <= 0) EndGame();
+        --SpawnCount;
+        if (SpawnCount <= 0 && GameStart) OnNextLevel?.Invoke();;
     }
 
-    public void ResetLives()
+    public void SetSpawnCount(int newSpawnCount) => SpawnCount = newSpawnCount;
+
+    public void AddEnemy(Enemy enemy) => Enemies.Add(enemy);
+
+    public void RemoveEnemy(Enemy enemy) => Enemies.Remove(enemy);
+
+    public void ProcessTurn()
     {
-        Lives = StartingLives;
+
     }
 
     public void StartGame()
@@ -80,10 +73,8 @@ public class GameManager : MonoBehaviour
         GameStart = true;
         GameOver = false;
         ChangeLevel = false;
-        ResetLives();
         ResetScore();
         OnGameStart?.Invoke();
-        OnLivesChanged?.Invoke(Lives);
         OnScoreChanged?.Invoke(Score);
         OnHighScoreChanged?.Invoke(HighScore);
     }
@@ -117,18 +108,6 @@ public class GameManager : MonoBehaviour
         OnNextLevel?.Invoke();
     }
 
-    public void SetMinMaxXY(GameObject obj)
-    {
-        SpriteRenderer spriteRenderer = obj.GetComponent<SpriteRenderer>();
-        if (spriteRenderer == null) return;
-
-        Bounds bounds = spriteRenderer.bounds;
-        MinX = bounds.min.x;
-        MaxX = bounds.max.x;
-        MinY = bounds.min.y;
-        MaxY = bounds.max.y;
-    }
-
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -138,8 +117,6 @@ public class GameManager : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(gameObject);
-
-        ResetLives();
     }
 
     void Start()

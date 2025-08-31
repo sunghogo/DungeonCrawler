@@ -44,11 +44,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4809f7cd0eba94c588aee23ab42f35b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
-  lvl: 1
-  hp: 20
-  mp: 10
-  xp: 0
-  xpGiven: 1
-  atk: 5
-  def: 5
-  spd: 5
+  startingLVL: 1
+  startingMaxHP: 20
+  startingMaxMP: 10
+  startingMaxXP: 10
+  startingXPDrop: 1
+  startingATK: 5
+  startingDEF: 5
+  startingSPD: 5
+  <LVL>k__BackingField: 0
+  <MaxHP>k__BackingField: 0
+  <HP>k__BackingField: 0
+  <MaxMP>k__BackingField: 0
+  <MP>k__BackingField: 0
+  <MaxXP>k__BackingField: 0
+  <XP>k__BackingField: 0
+  <XPDrop>k__BackingField: 0
+  <ATK>k__BackingField: 0
+  <DEF>k__BackingField: 0
+  <SPD>k__BackingField: 0
+  <CharacterName>k__BackingField: Player

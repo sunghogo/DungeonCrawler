@@ -135,7 +135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Bar
   maskRectTransform: {fileID: 2556901684245067831}
   imageRectTransform: {fileID: 2786480018394495062}
-  fill: 1
+  fill: 0.091
 --- !u!1 &7276201942919653185
 GameObject:
   m_ObjectHideFlags: 0
