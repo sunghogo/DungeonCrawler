@@ -48,7 +48,7 @@ public class StatsPanel : MonoBehaviour
         foreach (var textTmp in textTmps)
         {
             string tag = textTmp.gameObject.tag;
-            string val = $"{tag}: {(int) Player.Instance.GetStat(StatUtils.TagToStat(tag))}";
+            string val = $"{tag}: {Player.Instance.GetStat(StatUtils.TagToStat(tag)):0}";
             textTmp.SetText(val);
         }
     }

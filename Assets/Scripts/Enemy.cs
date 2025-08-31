@@ -12,9 +12,9 @@ public class Enemy : Character
     [Header("Level Up Amount")]
     [SerializeField] float smallUpgradeAmount = 0.5f;
     [SerializeField] float bigUpgradeAmount = 3f;
-    [SerializeField] float XPDropScaling = 1.5f;
+    [SerializeField] float XPDropScaling = 1.75f;
 
-    StatType[] validUpgradeStats = { StatType.MaxHP, StatType.MaxMP, StatType.ATK, StatType.DEF, StatType.SPD };
+    StatType[] validUpgradeStats = { StatType.MaxHP, StatType.ATK, StatType.DEF, StatType.SPD };
     Vector3 originalPosition;
 
     public void LevelUp(int levels)
@@ -49,16 +49,7 @@ public class Enemy : Character
     {
         if (!IsAlive() || LevelUpPanel.Instance.IsActive) return;
 
-        if (SPD > Player.Instance.SPD)
-        {
-            if (Player.Instance.IsAlive()) Attack(Player.Instance);
-            if (Player.Instance.IsAlive()) Player.Instance.Attack(this);
-        }
-        else
-        {
-            if (IsAlive()) Player.Instance.Attack(this);
-            if (IsAlive()) Attack(Player.Instance);
-        }
+        GameManager.Instance.ProcessTurn(this);
     }
 
     void HandleGameOver()
@@ -93,7 +84,7 @@ public class Enemy : Character
         UpdateHpText();
         UpdateHpBar();
         DamageText damageText = Instantiate(damageTextPrefab, enemyCanvas).GetComponent<DamageText>();
-        damageText.SetText($"-{CalculateDamageTaken(Player.Instance)}");
+        damageText.SetText($"-{lastDamageTaken:0}");
         StartCoroutine(Coroutines.Shake(transform, originalPosition, 0.25f, 0.25f, 4f));
     }
 
@@ -110,6 +101,7 @@ public class Enemy : Character
 
     protected override void OnDeath()
     {
+        GameManager.Instance.IncrementScore();
         StartCoroutine(Coroutines.FadeRedBlack(GetComponent<SpriteRenderer>(), 0.5f, 2f));
         Player.Instance.GainXP(XPDrop);
         Destroy(gameObject, 0.5f);

@@ -1,6 +1,7 @@
 using UnityEngine;
+using System.Collections.Generic;
 
-public abstract class Character : MonoBehaviour
+public abstract class Character : MonoBehaviour, ICombatant
 {
     [Header("Starting Stats")]
     [SerializeField] protected float startingLVL = 1;
@@ -30,8 +31,13 @@ public abstract class Character : MonoBehaviour
 
     [Header("Level Up Amount")]
     [SerializeField] float maxXPScaling = 2f;
-     
 
+    [field: Header("Skills")]
+    [field: SerializeReference] public List<IAttack> Attacks { get; protected set; } = new List<IAttack> { new BasicAttack() };
+    [field: SerializeReference] public IAttack selectedAttack { get; protected set; }
+
+    protected float lastDamageTaken = 0f;
+     
     public float GetStat(StatType stat)
     {
         return stat switch
@@ -63,14 +69,14 @@ public abstract class Character : MonoBehaviour
                 HP += amount;
                 break;
             case StatType.HP:
-                HP += amount;
+                HP = Mathf.Min(HP + amount, MaxHP);
                 break;
             case StatType.MaxMP:
                 MaxMP += amount;
                 MP += amount;
                 break;
             case StatType.MP:
-                MP += amount;
+                MP = Mathf.Min(MP + amount, MaxMP);
                 break;
             case StatType.MaxXP:
                 MaxXP += amount;
@@ -108,21 +114,39 @@ public abstract class Character : MonoBehaviour
         SPD = startingSPD;
     }
 
-    public void Attack(Character target)
+    public void SelectAttack(AttackType attackType)
     {
-        float damage = target.CalculateDamageTaken(this);
-        target.TakeDamage(damage);
-        OnAttack();
+        for (int i = 0; i < Attacks.Count; i++)
+        {
+            if (Attacks[i].Type == attackType)
+            {
+                if (Attacks[i].MPCost < MP) selectedAttack = Attacks[i];
+            }
+        }
+        OnSelectAttack();
     }
 
-    public float CalculateDamageTaken(Character attacker)
+    public bool Attack(ICombatant target)
     {
-        return Mathf.Max(attacker.ATK - DEF, 0f);
+        if (selectedAttack == null || target == null || !IsAlive()) return false;
+
+        if (selectedAttack.MPCost > MP)
+        {
+            SelectAttack(AttackType.BasicAttack);
+        }
+        else
+        {
+            MP -= selectedAttack.MPCost;
+        }
+        selectedAttack.Execute(this, target);
+        OnAttack();
+        return true;
     }
 
     public void TakeDamage(float damage)
     {
-        HP = Mathf.Max(HP - damage, 0f);
+        lastDamageTaken = Mathf.Max(damage, 0f);
+        HP = Mathf.Max(HP - lastDamageTaken, 0f);
         OnTakeDamage();
         if (HP <= 0f) OnDeath();
     }
@@ -131,7 +155,8 @@ public abstract class Character : MonoBehaviour
     {
         XP += experience;
         OnXPGain();
-        if (XP >= MaxXP)
+
+        while (XP >= MaxXP)
         {
             ++LVL;
             XP -= MaxXP;
@@ -145,6 +170,7 @@ public abstract class Character : MonoBehaviour
     void Awake()
     {
         InitializeStats();
+        selectedAttack = Attacks[0];
         OnAwake();
     }
 
@@ -166,6 +192,7 @@ public abstract class Character : MonoBehaviour
     protected virtual void OnAwake() { }
     protected virtual void OnStart() { }
     protected virtual void OnUpdate() { }
+    protected virtual void OnSelectAttack() { }
     protected virtual void OnAttack() { }
     protected virtual void OnTakeDamage() { }
     protected virtual void OnXPGain() { }

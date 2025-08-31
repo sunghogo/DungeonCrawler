@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     public static event Action OnGameStart;
     public static event Action OnGameOver;
     public static event Action OnScreenStart;
-    public static event Action OnTurn;
+
 
     [field: Header("Game States")]
     [field: SerializeField] public bool StartingScreen { get; private set; }
@@ -62,9 +62,34 @@ public class GameManager : MonoBehaviour
 
     public void RemoveEnemy(Enemy enemy) => Enemies.Remove(enemy);
 
-    public void ProcessTurn()
+    public void ProcessTurn(Enemy targetedEnemy)
     {
+        List<ICombatant> combatants = new List<ICombatant>
+        {
+            Player.Instance,
+        };
+        combatants.AddRange(Enemies);
+        combatants.Sort((a, b) => b.SPD.CompareTo(a.SPD));
 
+        foreach (var combatant in combatants)
+        {
+            if (!combatant.IsAlive()) continue;
+
+            if (combatant is Enemy enemy)
+            {
+                if (Player.Instance.IsAlive())
+                {
+                    enemy.Attack(Player.Instance);
+                }
+            }
+            else if (combatant is Player p)
+            {
+                if (targetedEnemy.IsAlive())
+                {
+                    p.Attack(targetedEnemy);
+                }
+            }
+        }
     }
 
     public void StartGame()

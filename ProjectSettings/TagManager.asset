@@ -17,6 +17,9 @@ TagManager:
   - MaxHP
   - MaxMP
   - MaxXP
+  - BasicAttack
+  - Bash
+  - Crush
   layers:
   - Default
   - TransparentFX

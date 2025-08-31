@@ -21,6 +21,11 @@ public class LevelUpPanel : MonoBehaviour
         IsActive = false;
     }
 
+    void HandleGameOver()
+    {
+        Deactivate();
+    }
+
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -31,5 +36,12 @@ public class LevelUpPanel : MonoBehaviour
         Instance = this;
 
         Deactivate();
+        GameManager.OnGameOver += HandleGameOver;
+
+    }
+    
+    void OnDestroy()
+    {
+        GameManager.OnGameOver += HandleGameOver;
     }
 }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class Player : Character
 {
@@ -7,10 +8,13 @@ public class Player : Character
     void HandleGameOver()
     {
         InitializeStats();
+        SelectAttack(AttackType.BasicAttack);
     }
 
     void HandleGameStart()
     {
+        InitializeStats();
+        SelectAttack(AttackType.BasicAttack);
         StatsPanel.Instance.UpdateStatsPanel();
     }
 
@@ -27,10 +31,21 @@ public class Player : Character
         GameManager.OnGameStart += HandleGameStart;
     }
 
+    protected override void OnStart()
+    {
+        Attacks.Add(new Bash());
+        Attacks.Add(new Crush());
+    }
+
     protected override void OnDestroyed()
     {
         GameManager.OnGameOver -= HandleGameOver;
         GameManager.OnGameStart -= HandleGameStart;
+    }
+
+    protected override void OnSelectAttack()
+    {
+        SkillPanel.Instance.UpdateTexts();
     }
 
     protected override void OnTakeDamage()

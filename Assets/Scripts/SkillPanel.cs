@@ -6,6 +6,9 @@ public class SkillPanel : MonoBehaviour
 
     [Header("Refs")]
     [SerializeField] GameObject subcontainer;
+    [SerializeField] SkillTextTMP bashText;
+    [SerializeField] SkillTextTMP crushText;
+
 
     public bool IsActive { get; private set; } = false;
 
@@ -19,6 +22,30 @@ public class SkillPanel : MonoBehaviour
     {
         subcontainer.SetActive(false);
         IsActive = false;
+    }
+
+    public void UpdateTexts()
+    {
+        AttackType selectedAttackType = Player.Instance.selectedAttack.Type;
+        switch (selectedAttackType)
+        {
+            case (AttackType.BasicAttack):
+                bashText.RegularSkillText();
+                crushText.RegularSkillText();
+                break;
+            case (AttackType.Bash):
+                bashText.BoldUnderlineSkillText();
+                crushText.RegularSkillText();
+                break;
+            case (AttackType.Crush):
+                bashText.RegularSkillText();
+                crushText.BoldUnderlineSkillText();
+                break;
+            default:
+                bashText.RegularSkillText();
+                crushText.RegularSkillText();
+                break;
+        }
     }
 
     void HandleGameOver()

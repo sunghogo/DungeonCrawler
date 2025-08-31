@@ -2,16 +2,10 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.EventSystems;
 
-public class LevelUpTextTMP : MonoBehaviour, IPointerClickHandler
+public class LevelUpTextTMP : TextTMP, IPointerClickHandler
 {
     [SerializeField] float smallUpgradeAmount = 1f;
     [SerializeField] float bigUpgradeAmount = 5f;
-    TMP_Text tmp;
-
-    public void SetText(string value)
-    {
-        tmp.text = value;
-    }
 
     void LevelUpStat()
     {

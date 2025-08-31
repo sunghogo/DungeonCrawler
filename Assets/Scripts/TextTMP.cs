@@ -3,7 +3,7 @@ using TMPro;
 
 public class TextTMP : MonoBehaviour
 {
-    TMP_Text tmp;
+    protected TMP_Text tmp;
 
     public void SetText(string value) {
         tmp.text = value;
