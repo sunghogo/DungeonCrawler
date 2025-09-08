@@ -1,0 +1,3 @@
+[submodule "Dungeon Crawler WebGL Build"]
+	path = Dungeon Crawler WebGL Build
+	url = https://github.com/sunghogo/DungeonCrawlerWebGL.git
