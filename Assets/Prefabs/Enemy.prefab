@@ -125,6 +125,11 @@ MonoBehaviour:
   <DEF>k__BackingField: 0
   <SPD>k__BackingField: 0
   <CharacterName>k__BackingField: 
+  maxXPScaling: 2
+  <Attacks>k__BackingField:
+  - rid: 3460103878592954386
+  <selectedAttack>k__BackingField:
+    rid: -2
   damageTextPrefab: {fileID: 665038286618291019, guid: 59da09e1fe77b40439f79a3f9119785e, type: 3}
   enemyCanvas: {fileID: 2930854259336519771}
   HPBar: {fileID: 1308691376220176949}
@@ -132,6 +137,15 @@ MonoBehaviour:
   LVLText: {fileID: 15083728034248947}
   smallUpgradeAmount: 1
   bigUpgradeAmount: 3
+  XPDropScaling: 1.75
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
+    - rid: 3460103878592954386
+      type: {class: BasicAttack, ns: , asm: Assembly-CSharp}
+      data: 
 --- !u!61 &8819206802200905581
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -186,6 +200,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8475180610377445906}
     m_Modifications:
+    - target: {fileID: 274011070097512649, guid: 83a4e9924bec94560b8eab364c6516bb, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 351356508042678427, guid: 83a4e9924bec94560b8eab364c6516bb, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

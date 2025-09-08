@@ -48,6 +48,11 @@ public class Player : Character
         SkillPanel.Instance.UpdateTexts();
     }
 
+    protected override void OnAttack()
+    {
+        StatsPanel.Instance.UpdateStatsPanel();
+    }
+
     protected override void OnTakeDamage()
     {
         StatsPanel.Instance.UpdateStatsPanel();

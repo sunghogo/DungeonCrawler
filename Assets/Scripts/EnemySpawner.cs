@@ -24,9 +24,9 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] float doubleSpawnChance = 0.35f;
     [SerializeField] float tripleSpawnChance = 0.15f;
 
-    public void Spawn()
+    public void Spawn(bool initialSpawn = false)
     {
-        int spawnCount = RandomizeNumberOfSpawns();
+        int spawnCount = RandomizeNumberOfSpawns(initialSpawn);
         GameManager.Instance.SetSpawnCount(spawnCount);
         for (int i = 0; i < spawnCount; ++i)
         {
@@ -35,7 +35,7 @@ public class EnemySpawner : MonoBehaviour
             Enemy enemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity, transform).GetComponent<Enemy>();
             GameManager.Instance.AddEnemy(enemy);
 
-            int levelDiff = (int)Player.Instance.LVL - 1;
+            int levelDiff = (initialSpawn) ? 0 : (int)Player.Instance.LVL - 1;
             enemy.LevelUp(levelDiff);
         }
     }
@@ -59,7 +59,7 @@ public class EnemySpawner : MonoBehaviour
         return enemy;
     }
 
-    int RandomizeNumberOfSpawns()
+    int RandomizeNumberOfSpawns(bool initialSpawn = false)
     {
         int spawns;
         float spawnRoll = UnityEngine.Random.value;
@@ -75,12 +75,13 @@ public class EnemySpawner : MonoBehaviour
         {
             spawns = 1;
         }
+        if (initialSpawn && spawns > 2) spawns = 2; 
         return spawns;
     }
 
     void HandleGameStart()
     {
-        Spawn();
+        Spawn(true);
     }
 
     void HandleNextLevel()

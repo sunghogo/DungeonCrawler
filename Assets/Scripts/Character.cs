@@ -120,7 +120,7 @@ public abstract class Character : MonoBehaviour, ICombatant
         {
             if (Attacks[i].Type == attackType)
             {
-                if (Attacks[i].MPCost < MP) selectedAttack = Attacks[i];
+                if (Attacks[i].MPCost <= MP) selectedAttack = Attacks[i];
             }
         }
         OnSelectAttack();

@@ -29,15 +29,15 @@ public class SkillPanel : MonoBehaviour
         AttackType selectedAttackType = Player.Instance.selectedAttack.Type;
         switch (selectedAttackType)
         {
-            case (AttackType.BasicAttack):
+            case AttackType.BasicAttack:
                 bashText.RegularSkillText();
                 crushText.RegularSkillText();
                 break;
-            case (AttackType.Bash):
+            case AttackType.Bash:
                 bashText.BoldUnderlineSkillText();
                 crushText.RegularSkillText();
                 break;
-            case (AttackType.Crush):
+            case AttackType.Crush:
                 bashText.RegularSkillText();
                 crushText.BoldUnderlineSkillText();
                 break;

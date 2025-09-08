@@ -11,8 +11,11 @@ public class LevelUpPanel : MonoBehaviour
 
     public void Activate()
     {
-        subcontainer.SetActive(true);
-        IsActive = true;
+        if (GameManager.Instance.GameStart)
+        {
+            subcontainer.SetActive(true);
+            IsActive = true;
+        }
     }
 
     public void Deactivate()
@@ -42,6 +45,6 @@ public class LevelUpPanel : MonoBehaviour
     
     void OnDestroy()
     {
-        GameManager.OnGameOver += HandleGameOver;
+        GameManager.OnGameOver -= HandleGameOver;
     }
 }
